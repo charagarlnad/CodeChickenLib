@@ -51,7 +51,7 @@ public abstract class WorldExtension
     {
         ChunkExtension extension = chunkMap.get(chunk);
         if(extension != null)
-            chunkMap.get(chunk).unload();
+            extension.unload();
     }
     
     protected final void loadChunkData(Chunk chunk, NBTTagCompound tag)
@@ -63,7 +63,7 @@ public abstract class WorldExtension
     {
         ChunkExtension extension = chunkMap.get(chunk);
         if(extension != null)
-            chunkMap.get(chunk).saveData(tag);
+            extension.saveData(tag);
     }
     
     protected final void remChunk(Chunk chunk)
