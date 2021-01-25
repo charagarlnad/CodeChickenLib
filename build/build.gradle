@@ -51,6 +51,7 @@ jar {
     version = "${project.minecraft.version}-${project.version}"
     manifest {
         attributes 'Main-Class': 'codechicken.lib.tool.Main'
+        attributes 'FMLAT': 'ccl_at.cfg'
     }
 
 }
@@ -59,6 +60,9 @@ sourceSets {
 		java {
 			srcDir new File(project.projectDir.parentFile, "src")
 		}
+        resources {
+            srcDir new File(project.projectDir.parentFile, "resources")
+        }
 	}
 }
 

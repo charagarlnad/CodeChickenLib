@@ -525,15 +525,9 @@ public final class PacketCustom implements MCDataInput, MCDataOutput
     }
 
     public static void sendToChunk(Packet packet, World world, int chunkX, int chunkZ) {
-        PlayerManager playerManager = ((WorldServer)world).getPlayerManager();
-        for (EntityPlayerMP player : (List<EntityPlayerMP>) MinecraftServer.getServer().getConfigurationManager().playerEntityList)
-            if(playerManager.isPlayerWatchingChunk(player, chunkX, chunkZ))
-                sendToPlayer(packet, player);
-
-        /* Commented until forge accepts access tranformer request
-        PlayerInstance p = ((WorldServer) world).getPlayerManager().getOrCreateChunkWatcher(chunkX, chunkZ, false);
+        PlayerManager.PlayerInstance p = ((WorldServer) world).getPlayerManager().getOrCreateChunkWatcher(chunkX, chunkZ, false);
         if (p != null)
-            p.sendToAllPlayersWatchingChunk(packet);*/
+            p.sendToAllPlayersWatchingChunk(packet);
     }
 
     public void sendToOps() {
