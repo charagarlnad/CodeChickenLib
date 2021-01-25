@@ -56,29 +56,29 @@ jar {
 
 }
 sourceSets {
-	main {
-		java {
-			srcDir new File(project.projectDir.parentFile, "src")
-		}
+    main {
+        java {
+            srcDir new File(project.projectDir.parentFile, "src")
+        }
         resources {
             srcDir new File(project.projectDir.parentFile, "resources")
         }
-	}
+    }
 }
 
 // Add in a source jar for people, should they desire to download such a thing
 task sourceJar(type: Jar) {
-	from sourceSets.main.allSource
-	classifier = 'src'
+    from sourceSets.main.allSource
+    classifier = 'src'
     version = "${project.minecraft.version}-${project.version}"
 }
 
 // Add in an mcp named jar, for those who wish to run in a development environment (assuming mcp naming matches)
 task deobfJar(type: Jar) {
-	from sourceSets.main.output
-	classifier = 'dev'
+    from sourceSets.main.output
+    classifier = 'dev'
     version = "${project.minecraft.version}-${project.version}"
-	manifest {
+    manifest {
         attributes 'Main-Class': 'codechicken.lib.tool.Main'
     }
 
@@ -86,7 +86,7 @@ task deobfJar(type: Jar) {
 
 // Tell the artifact system about our extra jars
 artifacts {
-	archives sourceJar, deobfJar
+    archives sourceJar, deobfJar
 }
 
 // Configure an upload task. this is setup for uploading to files.minecraftforge.net. There are other examples around
