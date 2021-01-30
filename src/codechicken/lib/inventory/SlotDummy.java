@@ -69,4 +69,9 @@ public class SlotDummy extends SlotHandleClicks
             stack = InventoryUtils.copyStack(stack, stackLimit);
         super.putStack(stack);
     }
+
+    @Override
+    public boolean canTakeStack(EntityPlayer playerIn) {
+        return false;
+    }
 }
